@@ -1,59 +1,77 @@
-# FixAngularSandbox
+# FIX Angular Sandbox
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+Angular 21 sandbox application used to integrate and validate the `fix-platform` package in a standalone Angular app.
 
-## Development server
+## Tech Stack
 
-To start a local development server, run:
+- Angular 21 (standalone APIs)
+- TypeScript (strict mode)
+- npm (required)
 
-```bash
-ng serve
-```
+## Prerequisites
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+- Node.js 22+ (LTS recommended)
+- npm 11+
 
-## Code scaffolding
+## Installation
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Install dependencies:
 
 ```bash
-ng generate --help
+npm install
 ```
 
-## Building
-
-To build the project run:
+Install `fix-platform` from a local workspace path (example):
 
 ```bash
-ng build
+npm install "fix-platform@file:../FIX/FIX.Platform/FIX.Platform.Frontend"
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## Environment Configuration
 
-## Running unit tests
+`initFixCore` reads the API base URL from:
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+- `src/environments/environment.ts`
 
-```bash
-ng test
+Update this constant before running or building:
+
+```ts
+export const server_url = 'https://localhost:7251';
 ```
 
-## Running end-to-end tests
+## Available Scripts
 
-For end-to-end (e2e) testing, run:
+- `npm run start` - Start dev server (`development` configuration)
+- `npm run build` - Production build
+- `npm run build:dev` - Development build
+- `npm run watch` - Development watch build
+- `npm run typecheck` - TypeScript check (no emit)
+- `npm run format` - Format project with Prettier
+- `npm run format:check` - Verify formatting
 
-```bash
-ng e2e
+## Build Output
+
+Production artifacts are generated in:
+
+`dist/fix-angular-sandbox`
+
+## Static Assets
+
+Icons from `fix-platform` are copied to `/_icons/` via `angular.json` assets configuration:
+
+- `node_modules/fix-platform/dist/icons`
+
+`angular.json` snippet:
+
+```json
+{
+  "glob": "**/*",
+  "input": "node_modules/fix-platform/dist/icons",
+  "output": "/_icons/"
+}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## Notes
 
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- This project currently does not include unit/e2e test setup.
+- `fix-platform` must be installed before running `start` or `build`.
