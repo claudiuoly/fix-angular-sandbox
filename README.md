@@ -71,6 +71,25 @@ Icons from `fix-platform` are copied to `/_icons/` via `angular.json` assets con
 }
 ```
 
+## Support Action Contract
+
+`fix-login-page` does not provide a default support fallback. Consumers must handle the `login-support` event explicitly.
+
+Angular template example:
+
+```html
+<fix-login-page (login-support)="onSupportRequested($event)"></fix-login-page>
+```
+
+Angular handler example:
+
+```ts
+protected onSupportRequested(event: Event): void {
+  event.preventDefault();
+  // custom support flow (open modal, navigate, open ticket form, etc.)
+}
+```
+
 ## Notes
 
 - This project currently does not include unit/e2e test setup.
