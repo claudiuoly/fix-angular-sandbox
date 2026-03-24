@@ -1,0 +1,25 @@
+.demo-nav {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  border-radius: 9999px;
+  background: rgb(15 23 42 / 90%);
+  color: #f8fafc;
+  padding: 8px 12px;
+  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.demo-nav a {
+  color: #93c5fd;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.demo-nav a.is-active {
+  color: #f8fafc;
+  font-weight: 700;
+}

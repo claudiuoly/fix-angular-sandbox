@@ -4,15 +4,13 @@ import {
   Component
 } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { AuthDemoNavComponent } from './shared/auth-demo-nav/auth-demo-nav.component';
 
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, AuthDemoNavComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  template: `
-    <router-outlet />
-  `,
-  styles: [],
+  templateUrl: './app.component.html',
 })
-export class App {}
+export class AppComponent {}
