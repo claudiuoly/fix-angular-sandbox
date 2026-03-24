@@ -1,10 +1,11 @@
-import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { AppComponent } from './app/app.component';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { AppModule } from './app/app.module';
 import { initFixCore } from 'fix-platform';
 import 'fix-platform';
 import { SERVER_URL } from './app/environment';
 
 initFixCore({ baseUrl: SERVER_URL });
 
-bootstrapApplication(AppComponent, appConfig).catch((err) => console.error(err));
+platformBrowserDynamic()
+  .bootstrapModule(AppModule)
+  .catch((err: unknown) => console.error(err));

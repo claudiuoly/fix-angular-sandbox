@@ -1,13 +1,15 @@
+import { LoginCustomComponent } from './pages/auth/login-custom/login-custom.component';
+import { LoginComponent } from './pages/auth/login/login.component';
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
     path: 'login',
-    loadComponent: () => import('./pages/auth/login/login.component').then(m => m.LoginComponent),
+    component: LoginComponent,
   },
   {
     path: 'login-custom',
-    loadComponent: () => import('./pages/auth/login-custom/login-custom.component').then(m => m.LoginCustomComponent),
+    component: LoginCustomComponent,
   },
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: '**', redirectTo: 'login' },

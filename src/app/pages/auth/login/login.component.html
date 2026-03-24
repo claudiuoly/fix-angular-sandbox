@@ -1,8 +1,8 @@
 <div class="login-shell">
   <div class="login-container">
     <fix-login-page
-      (loginSuccess)="onLoginSuccess()"
-      (loginError)="onLoginError($event)"
+      (login-success)="onLoginSuccess()"
+      (login-error)="onLoginError($event)"
     ></fix-login-page>
 
     @if (errorMessage()) {

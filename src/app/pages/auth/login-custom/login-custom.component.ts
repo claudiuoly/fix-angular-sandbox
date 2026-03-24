@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-custom',
+  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [],
   templateUrl: './login-custom.component.html',
   styleUrls: ['./login-custom.component.scss'],
 })
@@ -23,7 +23,14 @@ export class LoginCustomComponent {
     void this.router.navigate(['/partners']);
   }
 
-  protected onLoginError(message: string): void {
+  protected onLoginError(eventOrMessage: Event | string): void {
+    const message =
+      typeof eventOrMessage === 'string'
+        ? eventOrMessage
+        : eventOrMessage instanceof CustomEvent
+          ? String(eventOrMessage.detail ?? '')
+          : '';
+
     this.errorMessage.set(message || 'Login failed.');
   }
 
