@@ -1,8 +1,11 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
+  ElementRef,
   inject,
-  signal
+  signal,
+  ViewChild
 } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -13,10 +16,20 @@ import { Router } from '@angular/router';
   templateUrl: './login-custom.component.html',
   styleUrls: ['./login-custom.component.scss'],
 })
-export class LoginCustomComponent {
+export class LoginCustomComponent implements AfterViewInit {
   private readonly router = inject(Router);
 
+  @ViewChild('loginPage') private readonly loginPage!: ElementRef<HTMLElement>;
+
   protected readonly errorMessage = signal('');
+
+  ngAfterViewInit(): void {
+    // Angular blocks [onX] property bindings for security, so we set the prop directly.
+    // Remove the assignment below to hide the support link in the login form.
+    (this.loginPage.nativeElement as any)['onSupportRequested'] = () => {
+      console.log('[fix-login-page] login-support handled by consumer');
+    };
+  }
 
   protected onLoginSuccess(): void {
     this.errorMessage.set('');
@@ -32,9 +45,5 @@ export class LoginCustomComponent {
           : '';
 
     this.errorMessage.set(message || 'Login failed.');
-  }
-
-  protected onSupportRequested(): void {
-    console.log('[fix-login-page] login-support handled by consumer');
   }
 }

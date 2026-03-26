@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { routes } from './app.routes';
 import { LoginCustomComponent } from './pages/auth/login-custom/login-custom.component';
+import { LoginFormOnlyComponent } from './pages/auth/login-form-only/login-form-only.component';
 import { LoginComponent } from './pages/auth/login/login.component';
 import { AuthDemoNavComponent } from './shared/auth-demo-nav/auth-demo-nav.component';
 
@@ -12,7 +13,8 @@ import { AuthDemoNavComponent } from './shared/auth-demo-nav/auth-demo-nav.compo
     AppComponent,
     AuthDemoNavComponent,
     LoginComponent,
-    LoginCustomComponent
+    LoginCustomComponent,
+    LoginFormOnlyComponent,
   ],
 	imports: [BrowserModule, RouterModule.forRoot(routes)],
 	providers: [],

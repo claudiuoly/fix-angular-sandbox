@@ -1,10 +1,9 @@
-<div class="login-shell">
-  <div class="login-container">
-    <fix-login-page
-      #loginPage
+<div class="shell">
+  <div class="form-wrapper">
+    <fix-login-form
       (login-success)="onLoginSuccess()"
       (login-error)="onLoginError($event)"
-    ></fix-login-page>
+    ></fix-login-form>
 
     @if (errorMessage()) {
       <p class="error-message" role="alert">{{ errorMessage() }}</p>

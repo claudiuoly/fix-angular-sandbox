@@ -1,35 +1,22 @@
 import {
-  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  ElementRef,
   inject,
-  signal,
-  ViewChild
+  signal
 } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-login-form-only',
   standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+  templateUrl: './login-form-only.component.html',
+  styleUrls: ['./login-form-only.component.scss'],
 })
-export class LoginComponent implements AfterViewInit {
+export class LoginFormOnlyComponent {
   private readonly router = inject(Router);
 
-  @ViewChild('loginPage') private readonly loginPage!: ElementRef<HTMLElement>;
-
   protected readonly errorMessage = signal('');
-
-  ngAfterViewInit(): void {
-    // Angular blocks [onX] bindings for security — set prop directly on the element.
-    // Remove the line below to hide the support link.
-    (this.loginPage.nativeElement as any)['onSupportRequested'] = () => {
-      console.log('[fix-login-page] login-support handled by consumer');
-    };
-  }
 
   protected onLoginSuccess(): void {
     this.errorMessage.set('');
