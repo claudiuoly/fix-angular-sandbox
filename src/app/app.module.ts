@@ -6,7 +6,9 @@ import { routes } from './app.routes';
 import { LoginCustomComponent } from './pages/auth/login-custom/login-custom.component';
 import { LoginFormOnlyComponent } from './pages/auth/login-form-only/login-form-only.component';
 import { LoginComponent } from './pages/auth/login/login.component';
+import { PartnersComponent } from './pages/partners-pages/partners/partners.component';
 import { AuthDemoNavComponent } from './shared/auth-demo-nav/auth-demo-nav.component';
+import { PostLoginHeaderComponent } from './shared/post-login-header/post-login-header.component';
 
 @NgModule({
 	declarations: [
@@ -15,6 +17,8 @@ import { AuthDemoNavComponent } from './shared/auth-demo-nav/auth-demo-nav.compo
     LoginComponent,
     LoginCustomComponent,
     LoginFormOnlyComponent,
+    PartnersComponent,
+    PostLoginHeaderComponent,
   ],
 	imports: [BrowserModule, RouterModule.forRoot(routes)],
 	providers: [],

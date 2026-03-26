@@ -33,6 +33,7 @@ export class LoginCustomComponent implements AfterViewInit {
 
   protected onLoginSuccess(): void {
     this.errorMessage.set('');
+    sessionStorage.setItem('fix-sandbox-authenticated', '1');
     void this.router.navigate(['/partners']);
   }
 
